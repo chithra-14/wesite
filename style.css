@@ -1,0 +1,122 @@
+/* Reset and smooth scroll */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  color: white;
+  padding: 15px 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Hamburger menu (hidden by default) */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Sections */
+.section {
+  padding: 80px 30px;
+  animation: fadeIn 1s ease-in;
+  border-bottom: 1px solid #ddd;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+form {
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  background-color: #1f1f1f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    background-color: #1f1f1f;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    display: none;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

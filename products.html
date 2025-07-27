@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝓥𝓮𝓷𝓭𝓲𝓯𝔂</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f5f0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #e63946;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+        .header-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+        }
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 300px;
+        }
+        .search-bar button {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0e6e6;
+        }
+        th {
+            background-color: #e63946;
+            color: white;
+            font-weight: 500;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f1f1;
+        }
+        tr:hover {
+            background-color: #f5eaea;
+        }
+        .low-stock {
+            background-color: #fff3cd !important;
+        }
+        .critical-stock {
+            background-color: #f8d7da !important;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+        .in-stock {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .low-stock-status {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .out-of-stock {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        @media (max-width: 768px) {
+            .search-bar {
+                width: 100%;
+            }
+            .search-bar input {
+                width: 100%;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍢 𝓥𝓮𝓷𝓭𝓲𝓯𝔂 🍡</h1>
+        
+        <div class="header-section">
+            <div class="search-bar">
+                <input type="text" placeholder="Search ingredients...">
+                <button>🔍 Search</button>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ingredient</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Supplier</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FD001</td>
+                    <td>🍗 Chicken Thighs</td>
+                    <td>Meat</td>
+                    <td>12.5</td>
+                    <td>kg</td>
+                    <td>Fresh Poultry Co.</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                </tr>
+                <tr class="low-stock">
+                    <td>FD002</td>
+                    <td>🫒 Cooking Oil</td>
+                    <td>Pantry</td>
+                    <td>3.2</td>
+                    <td>L</td>
+                    <td>Oil Distributors</td>
+                    <td><span class="status low-stock-status">Low Stock</span></td>
+                </tr>
+                <tr>
+                    <td>FD003</td>
+                    <td>🌾 Flour</td>
+                    <td>Dry Goods</td>
+                    <td>10.0</td>
+                    <td>kg</td>
+                    <td>Bakery Supply</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                </tr>
+                <tr class="critical-stock">
+                    <td>FD004</td>
+                    <td>🌶 Chili Sauce</td>
+                    <td>Condiments</td>
+                    <td>0.3</td>
+                    <td>L</td>
+                    <td>Spice World</td>
+                    <td><span class="status out-of-stock">Critical</span></td>
+                </tr>
+                <tr>
+                    <td>FD005</td>
+                    <td>🧅 Onions</td>
+                    <td>Vegetables</td>
+                    <td>8.0</td>
+                    <td>kg</td>
+                    <td>Local Market</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                </tr>
+                <tr>
+                    <td>FD006</td>
+                    <td>🥬 Lettuce</td>
+                    <td>Vegetables</td>
+                    <td>2.5</td>
+                    <td>kg</td>
+                    <td>Green Farms</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                </tr>
+                <tr>
+                    <td>FD007</td>
+                    <td>🧂 Salt</td>
+                    <td>Pantry</td>
+                    <td>5.0</td>
+                    <td>kg</td>
+                    <td>Spice World</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                </tr>
+                <tr class="low-stock">
+                    <td>FD008</td>
+                    <td>🥚 Eggs</td>
+                    <td>Dairy</td>
+                    <td>12</td>
+                    <td>pcs</td>
+                    <td>Fresh Poultry Co.</td>
+                    <td><span class="status low-stock-status">Low Stock</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

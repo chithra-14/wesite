@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #003366; /* Navy blue */
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #003366;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 51, 102, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #003366;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #003366;
+            outline: none;
+            background-color: white;
+        }
+        
+        .name-fields, .contact-fields {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .name-fields .form-group,
+        .contact-fields .form-group {
+            flex: 1;
+        }
+        
+        .radio-group, .checkbox-group {
+            margin-top: 8px;
+        }
+        
+        .radio-option, .checkbox-option {
+            margin-right: 20px;
+            display: inline-block;
+        }
+        
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            background-color: #002244;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .form-note {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 6px;
+            font-style: italic;
+        }
+        
+        fieldset {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        legend {
+            color: #003366;
+            font-weight: 600;
+            padding: 0 10px;
+            font-size: 1.1em;
+        }
+        
+        .vendor-type-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .business-docs {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vendor Registration</h1>
+    
+    <div class="form-container">
+        <form id="vendorForm" action="/submit-vendor-form" method="POST" enctype="multipart/form-data">
+            <!-- Business Information Section -->
+            <fieldset>
+                <legend>Business Information</legend>
+                
+                <div class="form-group">
+                    <label for="businessName">Business Name <span class="required">*</span></label>
+                    <input type="text" id="businessName" name="businessName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessType">Business Type <span class="required">*</span></label>
+                    <select id="businessType" name="businessType" required>
+                        <option value="">Select business type</option>
+                        <option value="sole-proprietor">Sole Proprietor</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="llc">LLC</option>
+                        <option value="corporation">Corporation</option>
+                        <option value="non-profit">Non-Profit</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Vendor Category <span class="required">*</span></label>
+                    <div class="vendor-type-options">
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="food"> Food & Beverage</label>
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="supplies"> Office Supplies</label>
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="tech"> Technology</label>
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="furniture"> Furniture</label>
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="cleaning"> Cleaning Services</label>
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="printing"> Printing Services</label>
+                        <label class="checkbox-option"><input type="checkbox" name="vendorCategory" value="other"> Other</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taxId">Tax ID/EIN <span class="required">*</span></label>
+                    <input type="text" id="taxId" name="taxId" required>
+                    <p class="form-note">For US businesses: Employer Identification Number</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="yearsInBusiness">Years in Business</label>
+                    <input type="number" id="yearsInBusiness" name="yearsInBusiness" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="website">Business Website</label>
+                    <input type="url" id="website" name="website" placeholder="https://">
+                </div>
+            </fieldset>
+            
+            <!-- Contact Information Section -->
+            <fieldset>
+                <legend>Contact Information</legend>
+                
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="contactFirstName">Primary Contact First Name <span class="required">*</span></label>
+                        <input type="text" id="contactFirstName" name="contactFirstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactLastName">Primary Contact Last Name <span class="required">*</span></label>
+                        <input type="text" id="contactLastName" name="contactLastName" required>
+                    </div>
+                </div>
+                
+                <div class="contact-fields">
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address <span class="required">*</span></label>
+                        <input type="email" id="contactEmail" name="contactEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactPhone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="contactPhone" name="contactPhone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactPosition">Position/Title</label>
+                    <input type="text" id="contactPosition" name="contactPosition">
+                </div>
+            </fieldset>
+            
+            <!-- Business Address Section -->
+            <fieldset>
+                <legend>Business Address</legend>
+                
+                <div class="form-group">
+                    <label for="businessAddress">Street Address <span class="required">*</span></label>
+                    <input type="text" id="businessAddress" name="businessAddress" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessAddress2">Address Line 2</label>
+                    <input type="text" id="businessAddress2" name="businessAddress2">
+                </div>
+                
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="businessCity">City <span class="required">*</span></label>
+                        <input type="text" id="businessCity" name="businessCity" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="businessState">State/Province <span class="required">*</span></label>
+                        <input type="text" id="businessState" name="businessState" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="businessZip">ZIP/Postal Code <span class="required">*</span></label>
+                        <input type="text" id="businessZip" name="businessZip" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessCountry">Country <span class="required">*</span></label>
+                    <select id="businessCountry" name="businessCountry" required>
+                        <option value="">Select a country</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="AU">Australia</option>
+                        <!-- Add more countries as needed -->
+                    </select>
+                </div>
+            </fieldset>
+            
+            <!-- Business Documentation Section -->
+            <fieldset>
+                <legend>Business Documentation</legend>
+                
+                <div class="form-group">
+                    <label>Upload Required Documents <span class="required">*</span></label>
+                    <div class="business-docs">
+                        <div class="form-group">
+                            <label for="w9Form">W-9 Form (US Only)</label>
+                            <input type="file" id="w9Form" name="w9Form">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="certificateInsurance">Certificate of Insurance</label>
+                            <input type="file" id="certificateInsurance" name="certificateInsurance">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="businessLicense">Business License</label>
+                            <input type="file" id="businessLicense" name="businessLicense">
+                        </div>
+                    </div>
+                    <p class="form-note">Files should be in PDF, JPG, or PNG format (max 5MB each)</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="references">Business References</label>
+                    <textarea id="references" name="references" rows="4" placeholder="Please list 2-3 business references with contact information"></textarea>
+                </div>
+            </fieldset>
+            
+            <!-- Payment Information Section -->
+            <fieldset>
+                <legend>Payment Information</legend>
+                
+                <div class="form-group">
+                    <label for="paymentMethod">Preferred Payment Method <span class="required">*</span></label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select payment method</option>
+                        <option value="ach">ACH Transfer</option>
+                        <option value="check">Check</option>
+                        <option value="wire">Wire Transfer</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bankName">Bank Name</label>
+                    <input type="text" id="bankName" name="bankName">
+                </div>
+                
+                <div class="name-fields">
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number</label>
+                        <input type="text" id="accountNumber" name="accountNumber">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="routingNumber">Routing Number</label>
+                        <input type="text" id="routingNumber" name="routingNumber">
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!-- Terms and Submission -->
+            <div class="form-group">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="termsAgreement" required> 
+                    I certify that the information provided is accurate and complete. <span class="required">*</span>
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="marketingOptIn"> 
+                    I would like to receive updates and marketing communications
+                </label>
+            </div>
+            
+            <button type="submit">Submit Vendor Application</button>
+        </form>
+    </div>
+    
+    <script>
+        // Enhanced form validation
+        document.getElementById('vendorForm').addEventListener('submit', function(event) {
+            let isValid = true;
+            const errorColor = '#e74c3c';
+            
+            // Check required fields
+            const requiredFields = document.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (field.type === 'checkbox' && !field.checked) {
+                    isValid = false;
+                    field.parentElement.style.color = errorColor;
+                } else if ((field.type !== 'checkbox' && !field.value.trim())) {
+                    isValid = false;
+                    field.style.borderColor = errorColor;
+                } else {
+                    if (field.type === 'checkbox') {
+                        field.parentElement.style.color = '';
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                }
+            });
+            
+            // Email validation
+            const email = document.getElementById('contactEmail');
+            if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                isValid = false;
+                email.style.borderColor = errorColor;
+            }
+            
+            // Website validation if provided
+            const website = document.getElementById('website');
+            if (website.value && !/^https?:\/\/.+\..+/.test(website.value)) {
+                isValid = false;
+                website.style.borderColor = errorColor;
+            }
+            
+            if (!isValid) {
+                event.preventDefault();
+                alert('Please fill in all required fields correctly and check for errors.');
+                window.scrollTo(0, 0);
+            } else {
+                // Optional: Add form submission feedback
+                alert('Thank you for your vendor application! We will review your information and contact you soon.');
+            }
+        });
+        
+        // Reset error styles when user starts typing
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('input', function() {
+                this.style.borderColor = '#ddd';
+                if (this.type === 'checkbox') {
+                    this.parentElement.style.color = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
